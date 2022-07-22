@@ -32,12 +32,10 @@ function plotSeveralLagExamples(data,labels)
             P = P(1);
             Pm = Pm(1);
             
-            Plots(k) = P(1);
-            
+            Plots(k) = P(1);            
             
             s = (k-1)/(length(sugars) - 1);
-            clr = [1-s 0 s];
-            
+            clr = [1-s 0 s];            
             
             ylim([0.0 0.1]);
             xlim([0 24]);
@@ -52,16 +50,17 @@ function plotSeveralLagExamples(data,labels)
             drawnow
             
             if k == 1
-                L{k} = [data.sugarString2{k+1},' ',label,' OD data (mean R^2 \approx ',num2str(R2(k),3),')'];
+                L{k} = [data.sugarString2{k+1},' ',label,' OD data (R^2 \approx ',num2str(R2(k),2),')'];
             else
-                L{k} = [data.sugarString2{k+1},' (mean R^2 \approx ',num2str(R2(k),3),')'];
+                L{k} = [data.sugarString2{k+1},' (R^2 \approx ',num2str(R2(k),2),')'];
             end
         end
         
         Plots(k+1) = Pm;
-        L{k+1} = 'logistic fits';
+        L{k+1} = 'logistic datafits';
+        
         legend(Plots,L);
-        legend('location','northwest');
+        legend('location','northwest','FontSize',24);
         
         disp(['bacterium ',labels{j}]);
       

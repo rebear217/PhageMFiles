@@ -40,8 +40,9 @@ function [fitData,P,Pm] = logisticFitToOD(T,OD,plotFlag)
         Pm = plot(xpred,modelfun(Coefficients,xpred)-blank,'-','linewidth',2,'color',[1 1 1]*0.5);
         %plot(xpred,60*modelfunDeriv(Coefficients,xpred),'-','linewidth',1,'color',[1 1/3 1/3]*0.75);
         axis tight
-        xlabel('time (h)','fontsize',20);
-        ylabel('OD_{600}','fontsize',20);
+        xlabel('time (h)','fontsize',38);
+        ylabel('OD_{600}','fontsize',38);
+        set(gca,'Fontsize',34)
         %legend('OD_600','fit','location','northwest');
     end
     

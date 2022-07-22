@@ -166,13 +166,14 @@ function [coefficients,se,AIC,RKdata,RYplotLine,outGuesses] = plotJustRYTOfromLa
         %}
         
         RYTOmodelR = @(b,S)((abs(b(1))*S./(1+abs(b(2))*S)).*(1+abs(b(3))*S)./(1+(abs(b(3))+abs(b(4)))*S));
+        MonodModel = @(b,S)((abs(b(1))*S./(1+abs(b(2))*S)));
         if isempty(guesses)
-            MonodModel = @(b,S)((abs(b(1))*S./(1+abs(b(2))*S)));
             Monodmdl = NonLinearModel.fit(allSugars,Rdata,MonodModel,[max(Rdata) 1]);
             betaMonod = abs(Monodmdl.Coefficients.Estimate);    
             RYTOmdlR = NonLinearModel.fit(allSugars,Rdata,RYTOmodelR,[betaMonod(1) betaMonod(2) 1 0]);
         else
-            RYTOmdlR = NonLinearModel.fit(allSugars,Rdata,RYTOmodelR,guesses.betaGuess,'Options',opts);            
+            betaMonod = guesses.betaGuess;
+            RYTOmdlR = NonLinearModel.fit(allSugars,Rdata,RYTOmodelR,betaMonod,'Options',opts);            
         end
         beta = abs(RYTOmdlR.Coefficients.Estimate);
         se = RYTOmdlR.Coefficients.SE;
@@ -265,7 +266,7 @@ function [coefficients,se,AIC,RKdata,RYplotLine,outGuesses] = plotJustRYTOfromLa
         plot(rateFit2 + Ratedelta,yieldFit2 + Yielddelta,'--','color',[1 1 1]/2,'linewidth',1);
         pd = plot(rateFit2 - Ratedelta,yieldFit2 - Yielddelta,'--','color',[1 1 1]/2,'linewidth',1);
                 
-        legend([P pd],{[label,' data'],'RY theory','95% CIs'},'location','NorthEast');
+        legend([P pd],{label,'RYTO','95CI'},'location','NorthEast');
         %legend('boxoff')
         
         RYplotLine.x = RY;

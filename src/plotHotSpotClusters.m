@@ -77,8 +77,8 @@ for SNPflag = [4 1]
     set(p2,'markersize',5)
 
     p = [];
-    labels = {['cluster 1 (',xSNPflagTexts{SNPflag},')'],'2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'};
-    labels1 = {['cluster centre 1 (',xSNPflagTexts{SNPflag},')'],'2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'};
+    labels = {'cluster 1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'};
+    labels1 = {'cluster centre 1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'};
 
     for j = 1:length(clustMembsCell)
         s = (j-1)/(length(clustMembsCell) - 1);
@@ -87,20 +87,20 @@ for SNPflag = [4 1]
         if SNPflag == 1
             colr = s*col1 + (1-s)*col2;
 
-            p(j) = plot3(clusterCarbons(1),clusterCarbons(2),clusterCarbons(3),'*','markersize',30,'color',colr);
+            p(j) = plot3(clusterCarbons(1),clusterCarbons(2),clusterCarbons(3),'*','markersize',34,'color',colr);
             set(p(j),'color',colr);
 
             q = plotAProtein(data.carbonData{Iw}(alphaList(clustMembsCell{j}),:),colr);
-            set(q,'markersize',35)
+            set(q,'markersize',30)
 
             figure(2)
-            plot(clustCent(2,j),clHeight,'*r','markersize',15,'color',colr);
+            plot(clustCent(2,j),clHeight,'*','markersize',24,'color',colr);
             figure(3)
 
         else
             p(j)=plotAProtein(clusterCarbons,colr);
-            set(p(j),'markersize',60)
             set(p(j),'marker','.')
+            set(p(j),'markersize',60)
             %set(p(j),'linewidth',2)
 
             q=plotAProtein(data.carbonData{Iw}(alphaList(clustMembsCell{j}),:),colr);
@@ -111,12 +111,13 @@ for SNPflag = [4 1]
     end
 
     if SNPflag == 1
-        legend(p,labels1{1:length(p)})
+        legend(p,labels1{1:length(p)},'fontsize',22);
     else
-        legend(p,labels{1:length(p)})
+        legend(p,labels{1:length(p)},'fontsize',22);
     end
 
     legend1 = legend(gca,'show');
+    title(legend1,xSNPflagTexts{SNPflag})
     if SNPflag == 1
         set(legend1,'Position',[0.3 0.61 0.15 0.1 + length(p)*0.02]);
     else

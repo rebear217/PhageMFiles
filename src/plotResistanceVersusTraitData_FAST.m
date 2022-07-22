@@ -80,7 +80,7 @@ function Outdata = plotResistanceVersusTraitData_FAST(data,traitCode,allRKLagDat
                     XdataSet = RKLagdata.Kdata(F)/sugars(k);
                     YdataSet = mean(infectionVector);
                     YdataSet = ones(size(XdataSet))*mean(YdataSet);
-                    xText = 'yield (OD_{600} per malto^3)';
+                    xText = 'yield (OD_{600} per maltotriose)';
                     yText = 'mean phage susceptibility';
                     axisV = [0 validMaxYield 0 MaxPhi];
                 case 4
@@ -88,7 +88,7 @@ function Outdata = plotResistanceVersusTraitData_FAST(data,traitCode,allRKLagDat
                     %XdataSet = RKLagdata.growthRateData(F);
                     YdataSet = RKLagdata.Kdata(F)/sugars(k);
                     xText = 'growth rate (per h)';
-                    yText = 'yield (OD_{600} per malto^3)';
+                    yText = 'yield (OD_{600} per maltotriose)';
                     axisV = [0 validMaxRate 0 validMaxYield];
                 case 5
                     XdataSet = RKLagdata.Rdata(F);
@@ -109,7 +109,7 @@ function Outdata = plotResistanceVersusTraitData_FAST(data,traitCode,allRKLagDat
                     end
                     YdataSet = RKLagdata.Kdata(F)/sugars(k);
                     xText = 'lag (h)';
-                    yText = 'yield (OD_{600} per malto^3)';
+                    yText = 'yield (OD_{600} per maltotriose)';
                     axisV = [0 MaxLag 0 validMaxYield];
             end
             
@@ -172,9 +172,9 @@ function Outdata = plotResistanceVersusTraitData_FAST(data,traitCode,allRKLagDat
             if f == 1
                 subplot(2,4,k);
                 if ~isempty(thisP) && lFlag1(k) == 0
-                    xlabel(xText);
-                    ylabel(yText);
-                    legend(['data for malto^3 @ ', num2str(sugars(k)),' \mug/ml']);
+                    xlabel(xText,'fontsize',22);
+                    ylabel(yText,'fontsize',22);
+                    legend(['data for maltotriose ', num2str(sugars(k)),' \mug/ml'],'fontsize',16);
                     lFlag1(k) = 1;
                 end
             end
@@ -186,10 +186,14 @@ function Outdata = plotResistanceVersusTraitData_FAST(data,traitCode,allRKLagDat
     end
     
     figure(2)
+    tmp = data.sugarString2{2};
+    data.sugarString2{2} = [tmp,' maltotriose'];
     legend(pl,data.sugarString2{2:end});
-    xlabel(xText);
-    ylabel(yText);
-                
+    xlabel(xText,'fontsize',22);
+    ylabel(yText,'fontsize',22);
+    xlim([0 2])
+    ylim([0 0.004]);
+    
     figure(1)
     for k = 1:length(sugars)
         subplot(2,4,k);
@@ -221,11 +225,14 @@ function Outdata = plotResistanceVersusTraitData_FAST(data,traitCode,allRKLagDat
         [XdataSet,YdataSet] = removeOutliers(XdataSet,YdataSet,sig);
         
         [B,sigma2_x,x_est,y_est,stats] = deming(XdataSet,YdataSet);
+        rho = corr(XdataSet,YdataSet);
+        
         QD(k) = plot(X,demingmodel(B,X),'-k','color',[1 1 1]*0.25,'linewidth',3);        
         
         CI = ['[',num2str(stats.b_ci(2,1),2),',',num2str(stats.b_ci(2,2),2),']'];        
-        legend([P(k),QD(k)],{['malto^3 @ ', num2str(sugars(k)),' \mug/ml'],...
-        ['deming slope 95% CI ',CI]});
+        legend([P(k),QD(k)],{[num2str(sugars(k)),' \mug/ml malto^3 (\rho_{Pearson} \approx ',num2str(rho,3),')'],...
+        ['deming slope 95%CI ',CI]});
+        
 
         
         [CrhoS,CpS] = corr(XdataSet,YdataSet,'type','Spearman');
@@ -260,8 +267,9 @@ function Outdata = plotResistanceVersusTraitData_FAST(data,traitCode,allRKLagDat
         
         YL = ylim;
         XL = xlim;
-        text(0.35*XL(2),0.11*YL(2),['Pearson \rho \approx ',num2str(CrhoP,2),', p \approx ',num2str(CpP,2)]);
-        text(0.35*XL(2),0.06*YL(2),['Spearman \rho \approx ',num2str(CrhoS,2),', p \approx ',num2str(CpS,2)]);
+        
+        %text(0.35*XL(2),0.11*YL(2),['Pearson \rho \approx ',num2str(CrhoP,2),', p \approx ',num2str(CpP,2)]);
+        %text(0.35*XL(2),0.06*YL(2),['Spearman \rho \approx ',num2str(CrhoS,2),', p \approx ',num2str(CpS,2)]);
         
     end
     

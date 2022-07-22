@@ -91,11 +91,12 @@ function plotInteractionMatrix(data)
         box on
         axis([-0.0 1+length(phage_names) -0.25 length(bacteria_names)+1]);
         set(gca,'YTick', -0.5 + 1.5:1:(length(bacteria_names)+0.5))
-        set(gca,'YTickLabel',bacteria_names)   
-        set(gca, 'TickLength', [0 0]);
-        set(gca,'XTick', (1.5:1:(length(phage_names)+0.5)) - 0.5)
-        set(gca,'XTickLabel',phage_names)  
+        set(gca,'YTickLabel',bacteria_names,'fontsize',17)   
+        set(gca,'TickLength', [0 0]);
+        set(gca,'XTick',(1.5:1:(length(phage_names)+0.5)) - 0.5)
+        set(gca,'XTickLabel',phage_names,'fontsize',17)  
         xticklabel_rotate
+        %xtickangle(-45)
         xlabel('Phage','fontsize',24);
         ylabel('Bacteria','fontsize',24);
     end

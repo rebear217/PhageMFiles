@@ -21,6 +21,8 @@ clc
 disp('Please wait ...')
 load('./data/allData.mat')
 
+%%
+
 % Generate derived growth rate and yield data from OD:
 generateAllRKandLagData(data)
 
@@ -28,7 +30,9 @@ generateAllRKandLagData(data)
 % these make all necessary datafiles:
 
 generateDerivedRKYieldXLSfile;
+disp('done RK xls file ...')
 
 %%
 
 generateDerivedRRmaxKmXLSfile;
+disp('done RRK xls file ...')

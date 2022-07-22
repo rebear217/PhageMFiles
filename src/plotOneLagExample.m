@@ -29,7 +29,7 @@ function plotOneLagExample(data,label,sugar)
     %end
     
     s = (k-1)/(length(sugars) - 1);
-    clr = [1 1 1]/2;
+    clr = [1 1 1]*0.7;
 
     %axis tight
     ylim([-0.001 0.1]);
@@ -37,7 +37,10 @@ function plotOneLagExample(data,label,sugar)
     
     for J = 1:length(P)
         set(P(J),'color',clr);
-        set(P(J),'linewidth',3);
+        set(P(J),'linewidth',4);
+        set(Pm(J),'color',[1 0 0]);
+        set(Pm(J),'linewidth',1);
+        set(Pm(J),'linestyle','-.');        
     end
 
     %spaceplots;        

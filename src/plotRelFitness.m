@@ -56,16 +56,18 @@ function plotRelFitness(lamBstrains,relativeFitnesses,data)
     ylim([0 1.2]);
     xlim([1 N]);
     set(gca,'Xtick',1:N);
-    set(gca,'XtickLabel',lB,'FontSize',9);
-    %set(gca,'FontSize',9);
-    ylabel('relative fitness','FontSize',16);
-    xlabel('E.coli strain','FontSize',16)
+    set(gca,'XtickLabel',lB,'FontSize',16);
+    xtickangle(-45)
+    %set(gca,'FontSize',12);
+    ylabel('relative fitness','FontSize',22);
+    xlabel('E.coli strain','FontSize',22)
     
     %rotateXLabels( gca(), 45 );
     %xtickangle(45);
     
-    axes('Position',[0.3138      0.23301      0.57327       0.5267]);
+    axes('Position',[0.4      0.27      0.5       0.5]);
     set(gca,'FontSize',11);
+    
     for J = 1:N
         X = PhiMap(J);
         j = K(J);
@@ -85,8 +87,8 @@ function plotRelFitness(lamBstrains,relativeFitnesses,data)
     plot([xl(1) xl(2)],[wtRF wtRF],':','color',[0.6 0.2 0.2],'linewidth',1);
     set(gca,'Xtick',[-3 -2 -1 0]);
     set(gca,'Xticklabel',{'-inf','-2','-1','0'});
-    xlabel('log (mean phage susceptibility)','FontSize',14);
-    ylabel('relative fitness','FontSize',14);
+    xlabel('log (mean phage susceptibility)','FontSize',18);
+    ylabel('relative fitness','FontSize',18);
     
     export_fig('./figures/relativeFitness.pdf')
     

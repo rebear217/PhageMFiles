@@ -1,3 +1,9 @@
+%In the following description of the article text, these two lines mean the same thing:
+
+% Supp Figure x
+% Figure Sx
+
+%%
 
 addpath('./src/')
 
@@ -40,8 +46,12 @@ phiLinearRegressions(data)
 close all
 % An example WT protein comparison with the strain 56a....
 plotLamBDifferenceFromWt('56a',data);
-%This produces the Supp Info Figure S5:
-%plotLamBDifferenceFromWt('2b',data);
+
+%%
+
+% Supp Figure S10 (similar to Figure 4):
+close all
+plotLamBDifferenceFromWt('2b',data);
 
 %%
 
@@ -72,12 +82,11 @@ plotAllRYTOs(data,allRKLagData);
 % Figure 7
 close all
 plotResistanceVersusTraitData_FAST(data,4,allRKLagData);
-%this currently uses outlier removal at 3 x sigma:
+% this currently uses outlier removal at 3 x sigma:
 
 figure(1)
 export_fig('./figures/YieldAndRateCorrelation.pdf')
 figure(2)
-axis tight
 export_fig('./figures/YieldAndRateCorrelationAllData.pdf')
 
 %%
@@ -112,13 +121,17 @@ plotGrowthRatesFor({'56a','26a'},data,allRKLagData)
 
 %%
 
-%% Supp Figure 3d matching shapes example: Figure SS
+% Supp Figures S1-S5 are made by the above text because these are extensions of the figures in the main text.
+% Supp Figure S6 is a pedagogical figure not produced by this script, as is Supp Figure S9 which places the greasy slide locations onto a LamB structure.
 
-%run these commands:
-%1. cd('src')
-%2. sphereTest;
+%% The synthetic 3d matching "proteins" example in the supplementary: Figure S7
 
-%% Supp Figure network analysis: Figure S3
+close all
+cd('./src/sphereTest')
+sphereTest;
+cd('../..')
+
+%% Supp Figure network analysis: Figure S8
 
 close all
 nestedAnalysis;

@@ -21,7 +21,7 @@ function phiLinearRegressions(data)
         if sum(yData) > 0
             s = (j-1)/(n-1);
             colour = [0 0 0];
-            colour2 = [1 1 1]/2;
+            colour2 = [1 1 1]*0.7;
 
             %mdl = NonLinearModel.fit(xData,yData,f,[1 1]);
             %b0 = [mdl.Coefficients.Estimate(1) mdl.Coefficients.Estimate(2)];
@@ -42,11 +42,15 @@ function phiLinearRegressions(data)
                 ': p \approx ',num2str(pval,3),...
                 ', \rho \approx ',num2str(rho,2)];
             
+            leg1 = [data.infection.bacteria_names{j},...
+                ': p \approx ',num2str(pval,3)];
+            leg2 = ['\rho \approx ',num2str(rho,2)];
+                        
             %legend(leg,'location','northeast','fontsize',12)
             %legend('boxoff')                
             
-            text(min(xData)*1.05,0.925*max(yData),leg);
-            
+            text(1,0.9*max(yData),leg1);
+            text(1,0.8*max(yData),leg2);            
             
             p(j) = plot(xFine,f(b0,xFine),'-','linewidth',3,'color',colour);
             hold on
@@ -54,8 +58,8 @@ function phiLinearRegressions(data)
                     
             drawnow
 
-            xlabel('# bacteria phage X can kill','fontsize',14)
-            ylabel(['phage X infectivity to ',data.infection.bacteria_names{j}],'fontsize',14)
+            xlabel('# bacteria phage can kill','fontsize',14)
+            ylabel(['phage infectivity to ',data.infection.bacteria_names{j}],'fontsize',14)
             
             sp = sp + 1;
         end

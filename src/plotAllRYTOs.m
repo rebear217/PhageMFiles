@@ -6,13 +6,17 @@ function plotAllRYTOs(data,allRKLagData)
     yieldIssueList = {'13a','19a','28b','94a'};
     sugarsList = [250,160,250,250];
     sL = 1;
-
+    outGuesses = [];
+    
     for j = 1:46
-
         subplot(6,8,j);
         if ~ismember(data.bacteria{j},yieldIssueList)
             if j <= length(data.bacteria)
-                plotJustRYTOfromLabel_FAST(data.bacteria{j},allRKLagData,1);
+                if strcmp(data.bacteria{j},'70b')
+                    [~,~,~,~,~,outGuesses] = plotJustRYTOfromLabel_FAST(data.bacteria{j},allRKLagData,1,outGuesses);
+                else
+                    [~,~,~,~,~,outGuesses] = plotJustRYTOfromLabel_FAST(data.bacteria{j},allRKLagData,1);
+                end
                 ylabel('yield')
                 xlabel('growth rate (per h)')
 
