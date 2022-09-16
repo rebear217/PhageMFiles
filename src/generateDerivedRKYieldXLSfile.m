@@ -41,6 +41,6 @@ for r = 1:46
 	thisSheet{11,1} = 'Rsquareds for goodness of fit in [0,1]';
     thisSheet{11,2} = allRKLagData{r}.Rsquareddata;
     
-    writecell(thisSheet,'./data/derivedRKYieldData.xlsx','Sheet',allRKLagData{r}.bacterium);
+    writecell(thisSheet,'./dataRepo/derivedData/RKYield/derivedRKYieldData.xlsx','Sheet',allRKLagData{r}.bacterium);
 end
 

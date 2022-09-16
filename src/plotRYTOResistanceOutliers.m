@@ -497,7 +497,7 @@ function KmVec = plotRYTOResistanceOutliers(data,allRKLagData)
     thisSheet{3,1} = 'y axis data (rho-phi)';
     thisSheet{2,2} = MrVec(:)';
     thisSheet{3,2} = MphiVec(:)';
-    writecell(thisSheet,'./data/derivedRelativeTraitData.xlsx','Sheet','rho(R)Vrho(phi)');
+    writecell(thisSheet,'./dataRepo/derivedData/WTRelativeTraits/derivedRelativeTraitData.xlsx','Sheet','rho(R)Vrho(phi)');
     
     thisSheet = {};
 	thisSheet{1,1} = 'rho(Rmax) v rho(phi)';
@@ -505,7 +505,7 @@ function KmVec = plotRYTOResistanceOutliers(data,allRKLagData)
     thisSheet{3,1} = 'y axis data (rho-phi)';
     thisSheet{2,2} = MrmaxVec(:)';
     thisSheet{3,2} = MphiVec(:)';
-    writecell(thisSheet,'./data/derivedRelativeTraitData.xlsx','Sheet','rho(Rmax)Vrho(phi)');
+    writecell(thisSheet,'./dataRepo/derivedData/WTRelativeTraits/derivedRelativeTraitData.xlsx','Sheet','rho(Rmax)Vrho(phi)');
     
     thisSheet = {};
 	thisSheet{1,1} = 'rho(Km) v rho(phi)';
@@ -513,6 +513,6 @@ function KmVec = plotRYTOResistanceOutliers(data,allRKLagData)
     thisSheet{3,1} = 'y axis data (rho-phi)';
     thisSheet{2,2} = KmVec(:)';
     thisSheet{3,2} = MphiVec(:)';
-    writecell(thisSheet,'./data/derivedRelativeTraitData.xlsx','Sheet','rho(Km)Vrho(phi)');
+    writecell(thisSheet,'./dataRepo/derivedData/WTRelativeTraits/derivedRelativeTraitData.xlsx','Sheet','rho(Km)Vrho(phi)');
     
 end

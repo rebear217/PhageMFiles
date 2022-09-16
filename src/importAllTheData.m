@@ -4,7 +4,7 @@ clc
 
 %%
 
-load('data/phi-secondTry-large.mat');
+load('./data/phi-secondTry-large.mat');
 
 %%
 
@@ -34,7 +34,7 @@ data.proteinClosenessParameter = 0.005;
 for file = 1:length(data.fileNames)
     disp(data.fileNames{file});
     
-    [data.OD{file},data.sugars{file}] = importData(['data/',data.fileNames{file}]);
+    [data.OD{file},data.sugars{file}] = importData(['./dataRepo/rawData/OD-RYTO-runs/',data.fileNames{file}]);
     
 	bacNames{file} =  data.fileNames{file}(1:3);
     
@@ -59,7 +59,7 @@ clear file phi bacteria_names phage_names dataSet option_ug_Per_ml
 
 %%
 
-load('data/allCarbonData.mat')
+load('./data/allCarbonData.mat')
 
 for k = 1:length(bacNames)
     fi = find(strcmp(bacNames{k},bacteria_names));

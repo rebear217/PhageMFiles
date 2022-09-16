@@ -36,3 +36,12 @@ disp('done RK xls file ...')
 
 generateDerivedRRmaxKmXLSfile;
 disp('done RRK xls file ...')
+
+%%
+
+disp('Please wait, making CSV files ... ')
+csvTasks()
+
+%%
+
+disp('All done!')
