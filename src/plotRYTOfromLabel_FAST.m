@@ -158,14 +158,17 @@ function [coefficients,se,AIC,RKdata,figure2Data] = plotRYTOfromLabel_FAST(label
             [betaRY3,resid,J,Sigma] = nlinfit(allSugars, Rdata, MonodModel,betaMonod);
             [yFit, delta] = nlpredci(MonodModel,xFit,betaRY3,resid,'Covar',Sigma,'Alpha',alpha,'PredOpt','curve');        
 
-            P(3) = plotshaded(xFit,[yFit-delta ; yFit+delta],'k');
-            set(P(3),'FaceColor',[1 1 1]*0.8);
+            %P(3) = plotshaded(xFit,[yFit-delta ; yFit+delta],'k');
+            %set(P(3),'FaceColor',[1 1 1]*0.8);
+            
+            P(3) = plot(xFit,yFit-delta,'-k','linewidth',1);
+            plot(xFit,yFit+delta,'-k','linewidth',1);
 
             for j = 1:length(allSugars)
                 s = (las(j)-minas)/(maxas - minas);
                 thisColour = colourFunction(s);
                 if j == length(allSugars)
-                    P(1) = errorbar(allSugars(j),Rdata(j),Rsedata(j),'.','markersize',30,'color',thisColour,'linewidth',1);
+                    P(1) = errorbar(allSugars(j),Rdata(j),1.96*Rsedata(j),'.','markersize',30,'color',thisColour,'linewidth',1);
                 else
                     errorbar(allSugars(j),Rdata(j),Rsedata(j),'.','markersize',30,'color',thisColour,'linewidth',1);
                 end
@@ -180,8 +183,8 @@ function [coefficients,se,AIC,RKdata,figure2Data] = plotRYTOfromLabel_FAST(label
 
             ylabel('growth rate (per h)')
             xlabel('malto^{3} (\mug/ml)')
-            legend(P,{[label,' data'],['Monod regression (adj R^2 \approx ',num2str(MonodRsquared,3),')'],...
-                '95% CIs',['RYTO-adjusted regression (adj R^2 \approx ',num2str(RYTORsquared,3),', RL \approx ',num2str(RL,3),')']},'location','NorthWest');
+            legend(P,{[label,' data \pm s.e.'],['Monod regression (adj R^2 \approx ',num2str(MonodRsquared,3),')'],...
+                '95% fit CIs',['RYTO-adjusted regression (adj R^2 \approx ',num2str(RYTORsquared,3),', RL \approx ',num2str(RL,3),')']},'location','NorthWest');
             %legend('boxoff')
 
             figure2Data.allSugars = allSugars;

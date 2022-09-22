@@ -21,7 +21,7 @@ function Outdata = plotResistanceVersusTraitData_FAST(data,traitCode,allRKLagDat
     MaxPhi = 0.5;
     
 	figure(1);
-    set(1,'pos',[416         474        2085         872]);
+    set(1,'pos',[416         459        2145         886]);
     figure(2);
     set(2,'pos',[416     1   521   399]);
     

@@ -17,8 +17,8 @@ function plotAllRYTOs(data,allRKLagData)
                 else
                     [~,~,~,~,~,outGuesses] = plotJustRYTOfromLabel_FAST(data.bacteria{j},allRKLagData,1);
                 end
-                ylabel('yield')
-                xlabel('growth rate (per h)')
+                ylabel('yield','FontSize',20)
+                xlabel('growth rate (per h)','FontSize',18)
 
                 xlim([5e-3 2])
                 ylim([0 1.75e-3])

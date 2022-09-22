@@ -84,8 +84,8 @@ function plotInteractionMatrix(data)
     text(1,14,'susceptible to phage','fontsize',22)
     
 	export_fig('figures/infectionMatrix-imageSc.pdf')
-	%export_fig('figures/infectionMatrix-imageSc.png')
-	%export_fig('figures/infectionMatrix-imageSc.tif')
+	%exportgraphics(gca,'figures/infectionMatrix-imageSc.png','Resolution',1000)
+    %export_fig('figures/infectionMatrix-imageSc.tif')
     
     function myLabels()
         box on

@@ -51,7 +51,8 @@ function plotOneLagExample(data,label,sugar)
     %KP = plot([0 24],[M.K(1) M.K(1)],'-','color',[0 0 0],'linewidth',1);
     %plot([0 24],[M.blank(1) M.blank(1)],':','color',[1 1 1]*0.5,'linewidth',1);
 
-    legend([P(1),Pm(1)],{[label,' OD @ ',data.sugarString2{k+1}],['logistic fit (R^2 \approx ',num2str(R2,2),')']});
+    legend([P(1),Pm(1)],{[label,'@',data.sugarString2{k+1}],['logistic (R^2\approx',num2str(R2,2),')']},...
+        'FontSize',14);
     %legend('boxoff');
     %drawnow
     

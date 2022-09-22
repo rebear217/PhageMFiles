@@ -185,4 +185,10 @@ Nestedness
 
 %}
 
+%%
+
+% Make a folder of filenames match what is needed for the paper figure
+% order. Always run this to get a clean figures sub-folder:
+
+copyFiguresTask;
 
