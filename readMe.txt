@@ -35,11 +35,11 @@ Data and scripts have the following directory structure with . as the root:
 
 The following files can be run with a single click of the Matlab "green arrow" in the EDITOR menu and are used to perform the core data production and analysis functions. They can also be run by typing their name into the command window:
 
-1) PhageRYTOAnalyses/validVariables.m - changing this file makes data quality control either more or less severe. Do not change it to keep the same QC as used in the paper. See the paper supplement for information on how to adjust this file, if required.
+1) ./validVariables.m - changing this file makes data quality control either more or less severe. Do not change it to keep the same QC as used in the paper. See the paper supplement for information on how to adjust this file, if required.
 
-2) PhageRYTOAnalyses/dataTasks.m - running this will produce all the "derived data" files needed for the paper, starting from raw biological data produced in the lab.
+2) ./dataTasks.m - running this will produce all the "derived data" files needed for the paper, starting from raw biological data produced in the lab.
 
-3) PhageRYTOAnalyses/figureTasks.m - running this will produce all the figures in the paper, saving them with appropriate filenames to reflect their figure number.
+3) ./figureTasks.m - running this will produce all the figures in the paper, saving them with appropriate filenames to reflect their figure number.
 
 If these scripts are run in the order 1-2-3, then PDF files will subsequently be produced. Scripts make use of the Matlab Parallel Toolbox, if it is available.
 
@@ -51,11 +51,11 @@ Some of the figure window sizes have been chosen to be large. When these scripts
 A file not used in any Matlab scripts:
 --------------------------------------
 
-dataRepo/rawData/relativeFitnesses/ColonyCountsForRelFitness.csv
+./dataRepo/rawData/relativeFitnesses/ColonyCountsForRelFitness.csv
 
 This file is used in the computation of relative fitnesses in Figure 7C, these were not done in Matlab but by hand. The raw colony counts were used to calculate the values given in the files Fitnesses.xlsx (also Fitnesses.csv) which are then displayed in Figure 7C.
 
 --
 
-Version 1.0 of these files was used during submission, the most recent updates following publication will be at least Version 2.0.
+Zenodo Version 1.0 of these files was used during submission (https://zenodo.org/record/6883319#.YtqOyS1Q3aU), the most recent updates following publication will be at least Version 2.0.
 
