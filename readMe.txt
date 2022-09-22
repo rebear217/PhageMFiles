@@ -55,3 +55,7 @@ dataRepo/rawData/relativeFitnesses/ColonyCountsForRelFitness.csv
 
 This file is used in the computation of relative fitnesses in Figure 7C, these were not done in Matlab but by hand. The raw colony counts were used to calculate the values given in the files Fitnesses.xlsx (also Fitnesses.csv) which are then displayed in Figure 7C.
 
+--
+
+Version 1.0 of these files was used during submission, the most recent updates following publication will be at least Version 2.0.
+
