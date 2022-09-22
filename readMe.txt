@@ -16,21 +16,21 @@ The printing suite export_fig is not strictly necessary (it can be replaced in p
 
 https://uk.mathworks.com/matlabcentral/fileexchange/23629-export_fig/
 
-Data and scripts have the following directory structure with PhageRYTOAnalyses as the root:
+Data and scripts have the following directory structure with . as the root:
 
-PhageRYTOAnalyses/figures/
+./figures/
 
-PhageRYTOAnalyses/figures/unused	(PDFs generated during analyses but not used in the paper) 
+./figures/unused	(PDFs generated during analyses but not used in the paper) 
 
-PhageRYTOAnalyses/src/			(NB: this must be in the Matlab path for scripts to function)
+./src/			(NB: this must be in the Matlab path for scripts to function)
 
-PhageRYTOAnalyses/src/spheretest/	(Illustrates the use of a matching algorithm described in the supplement, does not contain any data analysis scripts)
+./src/spheretest/	(Illustrates the use of a matching algorithm described in the supplement, does not contain any data analysis scripts)
 
-PhageRYTOAnalyses/data/			(Contains .MAT files saved following analyses)
+./data/			(Contains .MAT files saved following analyses)
 
-PhageRYTOAnalyses/dataRepo/
-PhageRYTOAnalyses/dataRepo/derivedData	(Contains .CSV and .XLS files saved following an analysis)
-PhageRYTOAnalyses/dataRepo/rawData	(Contains .CSV and .XLS files prior to analysis)
+./dataRepo/
+./dataRepo/derivedData	(Contains .CSV and .XLS files saved following an analysis)
+./dataRepo/rawData	(Contains .CSV and .XLS files prior to analysis)
 
 
 The following files can be run with a single click of the Matlab "green arrow" in the EDITOR menu and are used to perform the core data production and analysis functions. They can also be run by typing their name into the command window:
